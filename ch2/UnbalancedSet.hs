@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances, FunctionalDependencies #-}
 
 module UnbalancedSet (
   UnbalancedSet
@@ -99,9 +99,9 @@ instance (Eq k) => Eq (MapNode k v) where
 instance (Ord k) => Ord (MapNode k v) where
   compare (Node k1 _) (Node k2 _) = k1 `compare` k2
   
-class Map m k v where
+class Map m k v | k v -> m where
   fromList :: [(k,v)] -> m k v
-  lookup :: m k v -> k -> Maybe v
+  lookupMap :: m k v -> k -> Maybe v
   
 data UnbalancedTreeMap k v = M {
   tree :: UnbalancedSet (MapNode k v)
@@ -111,8 +111,8 @@ instance (Eq k, Ord k) => Map UnbalancedTreeMap k v where
   fromList = foldl put (M E)
     where put m (k,v) = M $ insert (Node k v) (tree m)
           
-  lookup (M E) k = Nothing
-  lookup (M tree) k = maybe Nothing (Just . nodeValue) $ lookupSet tree (Node k undefined)
+  lookupMap (M E) k = Nothing
+  lookupMap (M tree) k = maybe Nothing (Just . nodeValue) $ lookupSet tree (Node k undefined)
     
 lookupSet :: (Eq a, Ord a) => UnbalancedSet a -> a -> Maybe a
 lookupSet E x = Nothing
