@@ -4,7 +4,6 @@ module LeftistHeap (
 ) where
 
 import Heap
-import qualified Data.List as L
 
 data LeftistHeap a = E
                    | T Int a (LeftistHeap a) (LeftistHeap a)
@@ -140,6 +139,7 @@ this probably isn't the right anser. -}
 data PartialHeap a = PH a (WeightBiasedLeftistHeap a)
                    deriving (Show)
 
+{- I think this exercise is not meant for a lazy language. -}
 mergeT :: (Ord a) => 
           WeightBiasedLeftistHeap a ->
           WeightBiasedLeftistHeap a ->
@@ -151,8 +151,9 @@ mergeT x y = go [] x y
             | vx <= vy  = go (push vx xL) xR y
             | otherwise = go (push vy yL) yR x
           where push v x = PH v x:acc
-                
-        build phs x = L.foldl' step x phs
+        
+        -- What about foldr?
+        build phs x = foldl step x phs
           where step y (PH v x) = makeWT v x y
                 
 
@@ -165,6 +166,4 @@ a leftist heap top-down, the subtrees are generated on demand.
 
 For a concurrent environment, I'm sorry... I see none. But again,
 the original merge function can generate subtrees in parallel.
-
-I'm totally lost in exercise 3.4.
 -}
