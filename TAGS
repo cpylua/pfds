@@ -1,7 +1,44 @@
 
+d:/Projects/haskell/pfds/.gitignore,0
+
+d:/Projects/haskell/pfds/README.md,9
+pfds1,0
+
 d:/Projects/haskell/pfds/ch2/Set.hs,16
 class Set 7,72
 
-d:/Projects/haskell/pfds/ch2/UnbalancedSet.hs,69
+d:/Projects/haskell/pfds/ch2/UnbalancedSet.hs,128
 {-# LANGUAGE MultiParamTypeClasses,1,0
-data UnbalancedSet a 10,146
+{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances,1,0
+data UnbalancedSet a 10,170
+
+d:/Projects/haskell/pfds/ch3/3-1.md,17
+PROOF:PROOF1,0
+
+d:/Projects/haskell/pfds/ch3/3-7.md,10
+PROOF1,0
+
+d:/Projects/haskell/pfds/ch3/BinomialHeap.hs,26
+data BinomialTree a 6,87
+
+d:/Projects/haskell/pfds/ch3/BinomialHeap2.hs,73
+data BinomialTree a 6,88
+link :: Ord a 11,267
+          go xs 53,1412
+
+d:/Projects/haskell/pfds/ch3/ExplicitMinHeap.hs,0
+
+d:/Projects/haskell/pfds/ch3/Heap.hs,17
+class Heap 3,30
+
+d:/Projects/haskell/pfds/ch3/LeftistHeap.hs,75
+rank E 16,417
+  where go 73,1773
+data WeightBiasedLeftistHeap a 90,2225
+
+d:/Projects/haskell/pfds/ch3/RedBlackSet.hs,58
+{-# LANGUAGE FlexibleInstances,1,0
+data Digit a 75,2586
+
+d:/Projects/haskell/pfds/ch3/Set.hs,40
+{-# LANGUAGE MultiParamTypeClasses,1,0
